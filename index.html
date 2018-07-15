@@ -3,9 +3,29 @@
   <head>
     <meta charset="utf-8">
     <title>Data Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
   </head>
-  <body>
 
+  <body>
+    <header>
+      <nav>
+        <img src="./assets/images/logo-laboratoria.svg" alt="logo Laboratoria">
+        <select id="city-filter"></select>
+        <select id="class-year-filter"></select>
+      </nav>
+    </header>
+
+<section>
+  <div id="show-data"></div>
+  <nav>
+  <ul>
+    <li><button class="button-menu">Dados Gerais</button></li>
+    <li><button class="button-menu">Nota das Alunas</button></li>
+    <li><button class="button-menu">Net Promoter Score(NPS)</button></li>
+    <li><button class="button-menu">Notas dos Mentores e Jedis</button></li>
+  </ul>
+</nav>
+</section>
 		<!-- Base de datos -->
 		<script src="./js/data.js"></script>
 		<!-- Aquí va tus archivos JS -->
