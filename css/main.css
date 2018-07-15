@@ -24,5 +24,8 @@ img {
 
 header nav img {
 	width: 200px;
+}
 
+.button-menu {
+	list-style: none;
 }
