@@ -18,9 +18,9 @@ function loadFilters(/*itemCity, itemClassYear*/) {
 	}
 
 	var selectClassYear = document.createElement('option');
-	selectClassYear.innerHTML = '';
-	selectClassYear.value = 'none';
-	classYearFilter.appendChild(selectClassYear);
+		selectClassYear.innerHTML = '';
+		selectClassYear.value = 'none';
+		classYearFilter.appendChild(selectClassYear);
 
 	cityFilter.addEventListener('change', function (event) {	
 		if (event.target.value === 'AQP') {
@@ -31,6 +31,10 @@ function loadFilters(/*itemCity, itemClassYear*/) {
 			var itemClassYear = data.LIM;
 		} else if (event.target.value === 'SCL') {
 			var itemClassYear = data.SCL;
+		}
+	
+		while (classYearFilter.hasChildNodes()) {  
+    		classYearFilter.removeChild(classYearFilter.firstChild);
 		}
 
 		for (item in itemClassYear) {
@@ -49,12 +53,12 @@ function showDataScreen(){
 	var showData = document.getElementById('show-data');
 	showData.innerHTML = '';
 
-	for (optionCity in data[city]) {
-		for (i in data[city][optionCity]) {			
-			//var paragraph = document.createElement('p');
-			//showData.appendChild(paragraph);
-		}
-	}
+	// for (option in data[city]) {
+	// 	for (i in data[city][option]['students']) {			
+	// 		var result = document.createElement('p');
+	// 		showData.appendChild(result);
+	// 	}
+	// }
 }
 
 console.log(data);
