@@ -18,7 +18,7 @@ function loadFilters() {
 		cityFilter.appendChild(itemFilter);
 	}		
 
-	// ao esolher a sede, mostra as turmas correspondentes a ela 
+	// ao escolher a sede, mostra as turmas correspondentes a ela no filtro seguinte
 	cityFilter.addEventListener('change', function (event) {	
 		if (event.target.value === 'AQP') {
 			var itemClassYear = data.AQP;
@@ -34,6 +34,7 @@ function loadFilters() {
     		classYearFilter.removeChild(classYearFilter.firstChild);
 		}
 
+		// para cada turma cria-se um novo elemento "option"
 		var selectClassYear = document.createElement('option');
 		selectClassYear.innerHTML = 'Escolha a Turma';
 		selectClassYear.value = 'none';
@@ -69,28 +70,46 @@ var SCLclass1 = data['SCL']['2016-2'];
 var SCLclass2 = data['SCL']['2017-1'];
 var SCLclass3 = data['SCL']['2017-2'];
 
+// botões menu desabilitados
+var button1 = document.querySelector('.button-menu1')
+button1.setAttribute('disabled', '');
+var button2 = document.querySelector('.button-menu2')
+button2.setAttribute('disabled', '');
+var button3 = document.querySelector('.button-menu3')
+button3.setAttribute('disabled', '');
+var button4 = document.querySelector('.button-menu4')
+button4.setAttribute('disabled', '');
+
+// função para habilitar botões
+function disabledButton() {
+	button1.removeAttribute('disabled');
+	button2.removeAttribute('disabled');
+	button3.removeAttribute('disabled');
+	button4.removeAttribute('disabled');
+}
+
 // função para mostrar resultados na tela
 function showDataScreen() {
 	var city = cityFilter.value;
 	var classYear = classYearFilter.value;
-
 	var showData = document.getElementById('show-data');
 	showData.innerHTML = '';
 
-	classYearFilter.addEventListener('change', function(event) {	
+	// ao clicar na turma AQPclass1 aciona o evento para desabilitar botões
+	classYearFilter.addEventListener('click', function(event) {	
 		if (cityFilter.value === 'AQP' && event.target.value === Object.keys(AQPcity)[0]) {
-			return button1AQPclass1();	
+			return disabledButton();
 		}
 	});
 
-	// função para resultado dos dados gerais da turma AQPclass1
-	function button1AQPclass1() {
+	// evento click para botão 1 mostrar resultado "dados gerais" da turma AQPclass1
+	button1.addEventListener('click', function button1AQPclass1(event) {
 		var students = document.createTextNode(AQPclass1['students'].length + ' alunas'); 
 		var paragraph = document.createElement('p');
 		paragraph.className = 'result';
-		showData.appendChild(paragraph);
 		paragraph.appendChild(students); 
-	}
+		showData.appendChild(paragraph);		
+	});
 }
 
 console.log(data);
