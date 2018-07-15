@@ -14,8 +14,7 @@ body {
 	margin: 0 auto;
 	line-height: 1.71429;
 	height: 100%;
-	/*font-family: '', sans-serif;*/
-	/*background-color: #e6ecf0;*/
+	font-family: sans-serif;
 }
 
 img {
@@ -26,6 +25,23 @@ header nav img {
 	width: 200px;
 }
 
-.button-menu {
+section .button-menu {
 	list-style: none;
+}
+
+section {
+	display: flex;
+	flex-direction: row;
+}
+
+#show-data {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	padding: 50px;
+}
+
+#show-data .result {
+	font-size: 30px;
+	margin-right: 30px;
 }
