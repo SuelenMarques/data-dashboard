@@ -1,5 +1,6 @@
 var cityFilter = document.getElementById('city-filter');
 var classYearFilter = document.getElementById('class-year-filter');
+var showData = document.getElementById('show-data');
 classYearFilter.addEventListener('change', showDataScreen);
 
 window.onload = loadFilters();
@@ -92,7 +93,7 @@ function disabledButton() {
 function showDataScreen() {
 	var city = cityFilter.value;
 	var classYear = classYearFilter.value;
-	var showData = document.getElementById('show-data');
+	
 	showData.innerHTML = '';
 
 	// ao clicar na turma AQPclass1 aciona o evento para desabilitar botões
@@ -101,15 +102,15 @@ function showDataScreen() {
 			return disabledButton();
 		}
 	});
-
-	// evento click para botão 1 mostrar resultado "dados gerais" da turma AQPclass1
-	button1.addEventListener('click', function button1AQPclass1(event) {
-		var students = document.createTextNode(AQPclass1['students'].length + ' alunas'); 
-		var paragraph = document.createElement('p');
-		paragraph.className = 'result';
-		paragraph.appendChild(students); 
-		showData.appendChild(paragraph);		
-	});
 }
+
+// evento click para botão 1 mostrar resultado "dados gerais" da turma AQPclass1
+var button1AQPclass1 = button1.addEventListener('click', function button1AQPclass1(event) {
+	var students = document.createTextNode(AQPclass1['students'].length + ' alunas'); 
+	var paragraph = document.createElement('p');
+	paragraph.className = 'result';
+	paragraph.appendChild(students); 
+	showData.appendChild(paragraph);		
+});
 
 console.log(data);
