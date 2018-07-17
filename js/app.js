@@ -106,11 +106,16 @@ function showDataScreen() {
 
 // evento click para botão 1 mostrar resultado "dados gerais" da turma AQPclass1
 var button1AQPclass1 = button1.addEventListener('click', function button1AQPclass1(event) {
+<<<<<<< HEAD
 	var students = AQPclass1['students'].length; 
+=======
+	
+>>>>>>> 12c94a27b046dd6ce3b1f7ab9b608ddac3ccf0c5
 	var studentsText = document.createTextNode('Total de ' + students + ' alunas');
 	var paragraph = document.createElement('p');
 	paragraph.className = 'result';
 	paragraph.appendChild(studentsText); 
+<<<<<<< HEAD
 	showData.appendChild(paragraph);
 
 	// % alunas inativas
@@ -174,6 +179,9 @@ var button2AQPclass1 = button2.addEventListener('click', function button2AQPclas
 
 
 
+
+	showData.appendChild(paragraph);	
+>>>>>>> 12c94a27b046dd6ce3b1f7ab9b608ddac3ccf0c5
 });
 
 console.log(data);
