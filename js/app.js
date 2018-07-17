@@ -106,11 +106,12 @@ function showDataScreen() {
 
 // evento click para botão 1 mostrar resultado "dados gerais" da turma AQPclass1
 var button1AQPclass1 = button1.addEventListener('click', function button1AQPclass1(event) {
-	var students = document.createTextNode(AQPclass1['students'].length + ' alunas'); 
+	var students = AQPclass1['students'].length;
+	var studentsText = document.createTextNode('Total de ' + students + ' alunas');
 	var paragraph = document.createElement('p');
 	paragraph.className = 'result';
-	paragraph.appendChild(students); 
-	showData.appendChild(paragraph);		
+	paragraph.appendChild(studentsText); 
+	showData.appendChild(paragraph);	
 });
 
 console.log(data);
