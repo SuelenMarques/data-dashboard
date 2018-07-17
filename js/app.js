@@ -106,11 +106,74 @@ function showDataScreen() {
 
 // evento click para botão 1 mostrar resultado "dados gerais" da turma AQPclass1
 var button1AQPclass1 = button1.addEventListener('click', function button1AQPclass1(event) {
-	var students = document.createTextNode(AQPclass1['students'].length + ' alunas'); 
+	var students = AQPclass1['students'].length; 
+	var studentsText = document.createTextNode('Total de ' + students + ' alunas');
 	var paragraph = document.createElement('p');
 	paragraph.className = 'result';
-	paragraph.appendChild(students); 
-	showData.appendChild(paragraph);		
+	paragraph.appendChild(studentsText); 
+	showData.appendChild(paragraph);
+
+	// % alunas inativas
+	var callInactiveStudents = inactiveStudents();
+
+	function inactiveStudents() {		
+		var arrayActive = [];
+
+		for (i in AQPclass1['students']) {	
+			var active = AQPclass1['students'][i]['active'];
+			arrayActive.push(active);
+		}	
+
+		var filterActive = arrayActive.filter(function(item) {
+			return item === false;
+		});
+		var activeFalse = filterActive.length;
+		var inactive = activeFalse * students / 100;
+		var inactiveStudents = document.createTextNode(inactive + '%' + ' alunas inativas')
+		var paragraph = document.createElement('p');
+		
+		paragraph.className = 'result';
+		paragraph.appendChild(inactiveStudents);
+		showData.appendChild(paragraph);			
+	}
+});
+
+// evento click para botão 2 mostrar resultado "notas alunas" da turma AQPclass1
+var button2AQPclass1 = button2.addEventListener('click', function button2AQPclass1(event) {
+	// nº e % das alunas acima da média por sprint - Socio e Tech separados
+	var callTechScore = techScore();
+
+	function techScore() {
+		var students = AQPclass1['students'].length;
+		var arrayTech = [];
+		
+		for (i in AQPclass1['students']) {
+			var sprints = AQPclass1['students'][i]['sprints']; // volta array sprints [{number, score{}}]
+			for (j in sprints) {
+				var score = sprints[j]['score']; // volta objeto score {tech, hse}
+				var techScore = score['tech']; // volta valores do tech
+				arrayTech.push(techScore);
+			}			
+		}		
+
+		var filterTech = arrayTech.filter(function(item) {
+			return item >= 1800;
+		});
+
+		var techResult = filterTech.length;
+		//var techResultPercent = ;
+		var techStudents = document.createTextNode(techResult + ' sprints com pontos técnicos acima da média')
+		var paragraph = document.createElement('p');
+		
+		paragraph.className = 'result';
+		paragraph.appendChild(techStudents);
+		showData.appendChild(paragraph);
+
+		console.log(sprints);
+	}
+
+
+
 });
 
 console.log(data);
