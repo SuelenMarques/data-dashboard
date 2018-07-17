@@ -74,19 +74,30 @@ var SCLclass3 = data['SCL']['2017-2'];
 // botões menu desabilitados
 var button1 = document.querySelector('.button-menu1')
 button1.setAttribute('disabled', '');
+button1.className = 'disabled';
+
 var button2 = document.querySelector('.button-menu2')
 button2.setAttribute('disabled', '');
+button2.className = 'disabled';
+
 var button3 = document.querySelector('.button-menu3')
 button3.setAttribute('disabled', '');
+button3.className = 'disabled';
+
 var button4 = document.querySelector('.button-menu4')
 button4.setAttribute('disabled', '');
+button4.className = 'disabled';
 
 // função para habilitar botões
 function disabledButton() {
 	button1.removeAttribute('disabled');
+	button1.classList.remove('disabled');
 	button2.removeAttribute('disabled');
+	button2.classList.remove('disabled');
 	button3.removeAttribute('disabled');
+	button3.classList.remove('disabled');
 	button4.removeAttribute('disabled');
+	button4.classList.remove('disabled');
 }
 
 // função para mostrar resultados na tela
@@ -106,16 +117,12 @@ function showDataScreen() {
 
 // evento click para botão 1 mostrar resultado "dados gerais" da turma AQPclass1
 var button1AQPclass1 = button1.addEventListener('click', function button1AQPclass1(event) {
-<<<<<<< HEAD
 	var students = AQPclass1['students'].length; 
-=======
-	
->>>>>>> 12c94a27b046dd6ce3b1f7ab9b608ddac3ccf0c5
 	var studentsText = document.createTextNode('Total de ' + students + ' alunas');
 	var paragraph = document.createElement('p');
+	
 	paragraph.className = 'result';
 	paragraph.appendChild(studentsText); 
-<<<<<<< HEAD
 	showData.appendChild(paragraph);
 
 	// % alunas inativas
@@ -140,7 +147,7 @@ var button1AQPclass1 = button1.addEventListener('click', function button1AQPclas
 		paragraph.className = 'result';
 		paragraph.appendChild(inactiveStudents);
 		showData.appendChild(paragraph);			
-	}
+	}	
 });
 
 // evento click para botão 2 mostrar resultado "notas alunas" da turma AQPclass1
@@ -176,12 +183,6 @@ var button2AQPclass1 = button2.addEventListener('click', function button2AQPclas
 
 		console.log(sprints);
 	}
-
-
-
-
-	showData.appendChild(paragraph);	
->>>>>>> 12c94a27b046dd6ce3b1f7ab9b608ddac3ccf0c5
 });
 
 console.log(data);
