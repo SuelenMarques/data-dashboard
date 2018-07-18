@@ -166,7 +166,7 @@ var button2AQPclass1 = button2.addEventListener('click', function button2AQPclas
 				var techScore = score['tech']; // volta valores do tech
 				arrayTech.push(techScore);
 			}			
-		}		
+		}	
 
 		var filterTech = arrayTech.filter(function(item) {
 			return item >= 1800;
@@ -184,5 +184,7 @@ var button2AQPclass1 = button2.addEventListener('click', function button2AQPclas
 		console.log(sprints);
 	}
 });
+
+
 
 console.log(data);
