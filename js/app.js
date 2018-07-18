@@ -187,31 +187,48 @@ var button2AQPclass1 = button2.addEventListener('click', function button2AQPclas
 
 //nps
 
-// var button3AQPclass1 = button3.addEventListener('click', function button3AQPclass1(event) {
+var button3AQPclass1 = button3.addEventListener('click', function button3AQPclass1(event) {
 
-// var callNps= netPromoterScore ();
+var callNps= netPromoterScore ();
 
-// function netPromoterScore() {
-// var arraynetPromoterScore = [];
-		
+function netPromoterScore() {
+var arrayPromoters = [];
+var arrayDetractors = [];
+var arraySprint = [];
 
-//   for (i in AQPclass1['ratings']) {
-//   var promotersScore = AQPclass1['nps'][i]['promoters'];
-//      for (j in sprints) {
-// 	var detractorsScore = ['nps'][i]['detractors'];
-// 	var netScore = (promotersScore - detractorsScore);
-// 	arraynetPromoterScore.push(netScore);
-// }
-// }
+for (i in AQPclass1['ratings']) {
+    var sprint = AQPclass1['ratings'][i]['sprints'];
+    arraySprint.push(sprint);
+  }
 
-//    var npsContainer = document.createTextNode('Média Mentores: ' + netScore)
-//    var paragraph = document.createElement('p');
-//    paragraph.className = 'result';
-//    paragraph.appendChild(npsContainer);
-//    showData.appendChild(paragraph);
-// }
+   var sprintLength = arraySprint.length;	
 
-//  });
+  for (i in AQPclass1['ratings']) {
+    var scoreNps = AQPclass1['ratings'][i]['nps'];
+    var promotersScore = scoreNps['promoters'];
+	  var detractorsScore = scoreNps['detractors'];
+	  arrayPromoters.push(promotersScore);
+	  arrayDetractors.push(detractorsScore);
+	  console.log(promotersScore);
+   }
+
+var sumPromoters = arrayPromoters.reduce(function(acc,num){
+  	return acc + num;
+});
+
+var sumDetractors = arrayDetractors.reduce(function(acc,num){
+  	return acc + num;
+  });
+
+var resultSub = sumPromoters - sumDetractors;
+var result = resultSub / sprintLength;
+   var npsContainer = document.createTextNode(result + '%' + ' é a média NPS')
+   var paragraph = document.createElement('p');
+   paragraph.className = 'result';
+   paragraph.appendChild(npsContainer);
+   showData.appendChild(paragraph);
+}
+ });
 
    //media teacher e jedi
 var button4AQPclass1 = button4.addEventListener('click', function button4AQPclass1(event) {
