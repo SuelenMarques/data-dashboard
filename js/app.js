@@ -185,4 +185,98 @@ var button2AQPclass1 = button2.addEventListener('click', function button2AQPclas
 	}
 });
 
+//nps
+
+// var button3AQPclass1 = button3.addEventListener('click', function button3AQPclass1(event) {
+
+// var callNps= netPromoterScore ();
+
+// function netPromoterScore() {
+// var arraynetPromoterScore = [];
+		
+
+//   for (i in AQPclass1['ratings']) {
+//   var promotersScore = AQPclass1['nps'][i]['promoters'];
+//      for (j in sprints) {
+// 	var detractorsScore = ['nps'][i]['detractors'];
+// 	var netScore = (promotersScore - detractorsScore);
+// 	arraynetPromoterScore.push(netScore);
+// }
+// }
+
+//    var npsContainer = document.createTextNode('Média Mentores: ' + netScore)
+//    var paragraph = document.createElement('p');
+//    paragraph.className = 'result';
+//    paragraph.appendChild(npsContainer);
+//    showData.appendChild(paragraph);
+// }
+
+//  });
+
+   //media teacher e jedi
+var button4AQPclass1 = button4.addEventListener('click', function button4AQPclass1(event) {
+
+var callTeacherAverage = teacherAverage();
+var callJediAverage = jediAverage();
+
+
+function teacherAverage() {
+  var arrayAverage = [];
+  var arraySprint = [];
+		
+
+  for (i in AQPclass1['ratings']) {
+    var averageTeacher = AQPclass1['ratings'][i]['teacher'];
+    arrayAverage.push(averageTeacher);
+  }
+
+  for (i in AQPclass1['ratings']) {
+    var sprint = AQPclass1['ratings'][i]['sprints'];
+    arraySprint.push(sprint);
+  }
+
+   var sprintLength = arraySprint.length;
+   var sumNote = arrayAverage.reduce(function(acc,num){
+  	return acc + num;
+  });
+
+   var average = sumNote / sprintLength;
+   var averageToFixed = average.toFixed(2);
+   var averageResult = document.createTextNode(averageToFixed + ' é a média dos mentores');
+   var paragraph = document.createElement('p');
+
+   paragraph.className = 'result';
+   paragraph.appendChild(averageResult);
+   showData.appendChild(paragraph);
+}
+
+function jediAverage() {
+  var arrayAverage = [];
+  var arraySprint = [];
+		
+
+  for (i in AQPclass1['ratings']) {
+    var averageJedi = AQPclass1['ratings'][i]['jedi'];
+    arrayAverage.push(averageJedi);
+  }
+
+  for (i in AQPclass1['ratings']) {
+    var sprint = AQPclass1['ratings'][i]['sprints'];
+    arraySprint.push(sprint);
+  }
+
+  var sprintLength = arraySprint.length;
+  var sumNote = arrayAverage.reduce(function(acc,num){
+  	return acc + num;
+  });
+  var average = sumNote / sprintLength;
+  var averageToFixed = average.toFixed(2);
+   var averageResult = document.createTextNode(averageToFixed + ' é a média dos jedis');
+   var paragraph = document.createElement('p');
+   paragraph.className = 'result';
+   paragraph.appendChild(averageResult);
+   showData.appendChild(paragraph);
+}
+ });
+
 console.log(data);
